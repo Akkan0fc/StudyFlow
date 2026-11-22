@@ -282,8 +282,8 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('PORT must be an integer from 1 to 65535.');
   const server = await createApp();
   server.on('error', error => { console.error(error.code === 'EADDRINUSE' ? `Port ${port} is already in use. Close the existing server or set another PORT in .env.` : error.message); process.exitCode = 1; });
-  server.listen(port, '127.0.0.1', () => {
-    console.log(`StudyFlow is ready at http://127.0.0.1:${port}`);
+  server.listen(port, '0.0.0.0', () => {
+    console.log(`StudyFlow is ready at http://0.0.0.0:${port}`);
     console.log('AI provider settings are available inside the app.');
   });
 }
