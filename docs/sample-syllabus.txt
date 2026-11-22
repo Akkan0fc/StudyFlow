@@ -1,0 +1,5 @@
+Course Title: Data Structures
+Unit I: Arrays and linked lists
+Unit II: Stacks and queues
+Unit III: Trees and graph traversal
+Unit IV: Sorting and searching

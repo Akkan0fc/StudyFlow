@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#163c32" />
+    <meta name="description" content="Turn subjects, exam dates and available time into a checked study plan. A constraint-based prompt engineering project." />
+    <title>StudyFlow · Smart Study Planner</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23163c32'/%3E%3Cpath d='M10 12h9v18h-9zm13-3h7v21h-7z' fill='%23d2f58a'/%3E%3C/svg%3E" />
+    <script src="/theme.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/features.css" />
+    <link rel="stylesheet" href="/theme.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div id="app"><div class="boot"><span class="brand-symbol">S</span><h1>StudyFlow</h1><p>Getting your study space ready…</p></div></div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <div id="chat-root"></div>
+    <div id="timer-dock"></div>
+    <dialog id="modal" aria-labelledby="modal-title"></dialog>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "smart-study-planner-c20",
+  "version": "1.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Smart Study Planner: a constraint-based timetable generator and prompt engineering laboratory",
+  "engines": {
+    "node": ">=22.3"
+  },
+  "scripts": {
+    "start": "node server/index.mjs",
+    "dev": "node --watch server/index.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "evaluate": "node server/evaluate.mjs"
+  },
+  "dependencies": {
+    "mammoth": "^1.13.0",
+    "pdf-parse": "^2.4.5"
+  },
+  "devDependencies": {
+    "jszip": "^3.10.2"
+  }
+}

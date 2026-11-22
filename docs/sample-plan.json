@@ -1,0 +1,663 @@
+{
+  "description": "Actual synthetic constraint-engine demonstration, not an LLM output",
+  "plan": {
+    "id": "db0aa938-82b3-4155-8e63-76fd4241f096",
+    "createdAt": "2026-11-08T03:53:54.594Z",
+    "input": {
+      "startDate": "2026-11-09",
+      "endDate": "2026-11-22",
+      "sessionMinutes": 50,
+      "breakMinutes": 10,
+      "maxDailyHours": 4,
+      "preferredTime": "balanced",
+      "subjects": [
+        {
+          "id": "math",
+          "name": "Engineering Mathematics",
+          "examDate": "2026-11-17",
+          "hours": 8,
+          "priority": 3,
+          "difficulty": 3,
+          "topics": [
+            "Linear algebra",
+            "Probability",
+            "Differential equations"
+          ]
+        },
+        {
+          "id": "dsa",
+          "name": "Data Structures",
+          "examDate": "2026-11-19",
+          "hours": 7,
+          "priority": 3,
+          "difficulty": 2,
+          "topics": [
+            "Trees & graphs",
+            "Sorting algorithms",
+            "Dynamic programming"
+          ]
+        },
+        {
+          "id": "dbms",
+          "name": "Database Systems",
+          "examDate": "2026-11-21",
+          "hours": 6,
+          "priority": 2,
+          "difficulty": 2,
+          "topics": [
+            "SQL practice",
+            "Normalization",
+            "Transactions"
+          ]
+        },
+        {
+          "id": "pe",
+          "name": "Prompt Engineering",
+          "examDate": "2026-11-23",
+          "hours": 5,
+          "priority": 2,
+          "difficulty": 1,
+          "topics": [
+            "Prompt patterns",
+            "Structured outputs",
+            "Evaluation methods",
+            "Constraint checking"
+          ]
+        }
+      ],
+      "availability": [
+        {
+          "day": 0,
+          "start": "09:00",
+          "end": "13:00"
+        },
+        {
+          "day": 1,
+          "start": "17:00",
+          "end": "21:00"
+        },
+        {
+          "day": 2,
+          "start": "17:00",
+          "end": "21:00"
+        },
+        {
+          "day": 3,
+          "start": "17:00",
+          "end": "21:00"
+        },
+        {
+          "day": 4,
+          "start": "17:00",
+          "end": "21:00"
+        },
+        {
+          "day": 5,
+          "start": "17:00",
+          "end": "21:00"
+        },
+        {
+          "day": 6,
+          "start": "09:00",
+          "end": "13:00"
+        }
+      ],
+      "blockedDates": []
+    },
+    "sessions": [
+      {
+        "id": "session-0001",
+        "subjectId": "math",
+        "subjectName": "Engineering Mathematics",
+        "date": "2026-11-09",
+        "start": "17:00",
+        "end": "17:50",
+        "durationMinutes": 50,
+        "topic": "Linear algebra",
+        "type": "study",
+        "reason": "Exam on 2026-11-17; high priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0002",
+        "subjectId": "math",
+        "subjectName": "Engineering Mathematics",
+        "date": "2026-11-09",
+        "start": "18:00",
+        "end": "18:50",
+        "durationMinutes": 50,
+        "topic": "Probability",
+        "type": "study",
+        "reason": "Exam on 2026-11-17; high priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0003",
+        "subjectId": "math",
+        "subjectName": "Engineering Mathematics",
+        "date": "2026-11-09",
+        "start": "19:00",
+        "end": "19:50",
+        "durationMinutes": 50,
+        "topic": "Differential equations",
+        "type": "study",
+        "reason": "Exam on 2026-11-17; high priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0004",
+        "subjectId": "math",
+        "subjectName": "Engineering Mathematics",
+        "date": "2026-11-09",
+        "start": "20:00",
+        "end": "20:50",
+        "durationMinutes": 50,
+        "topic": "Linear algebra",
+        "type": "study",
+        "reason": "Exam on 2026-11-17; high priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0005",
+        "subjectId": "math",
+        "subjectName": "Engineering Mathematics",
+        "date": "2026-11-10",
+        "start": "17:00",
+        "end": "17:50",
+        "durationMinutes": 50,
+        "topic": "Probability",
+        "type": "study",
+        "reason": "Exam on 2026-11-17; high priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0006",
+        "subjectId": "math",
+        "subjectName": "Engineering Mathematics",
+        "date": "2026-11-10",
+        "start": "18:00",
+        "end": "18:50",
+        "durationMinutes": 50,
+        "topic": "Differential equations",
+        "type": "study",
+        "reason": "Exam on 2026-11-17; high priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0007",
+        "subjectId": "math",
+        "subjectName": "Engineering Mathematics",
+        "date": "2026-11-10",
+        "start": "19:00",
+        "end": "19:50",
+        "durationMinutes": 50,
+        "topic": "Linear algebra",
+        "type": "study",
+        "reason": "Exam on 2026-11-17; high priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0008",
+        "subjectId": "math",
+        "subjectName": "Engineering Mathematics",
+        "date": "2026-11-10",
+        "start": "20:00",
+        "end": "20:50",
+        "durationMinutes": 50,
+        "topic": "Probability",
+        "type": "revision",
+        "reason": "Exam on 2026-11-17; high priority. Review and recall within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0009",
+        "subjectId": "math",
+        "subjectName": "Engineering Mathematics",
+        "date": "2026-11-11",
+        "start": "17:00",
+        "end": "17:50",
+        "durationMinutes": 50,
+        "topic": "Differential equations",
+        "type": "revision",
+        "reason": "Exam on 2026-11-17; high priority. Review and recall within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0010",
+        "subjectId": "math",
+        "subjectName": "Engineering Mathematics",
+        "date": "2026-11-11",
+        "start": "18:00",
+        "end": "18:30",
+        "durationMinutes": 30,
+        "topic": "Linear algebra",
+        "type": "revision",
+        "reason": "Exam on 2026-11-17; high priority. Review and recall within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0011",
+        "subjectId": "dsa",
+        "subjectName": "Data Structures",
+        "date": "2026-11-11",
+        "start": "18:40",
+        "end": "19:30",
+        "durationMinutes": 50,
+        "topic": "Trees & graphs",
+        "type": "study",
+        "reason": "Exam on 2026-11-19; high priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0012",
+        "subjectId": "dsa",
+        "subjectName": "Data Structures",
+        "date": "2026-11-11",
+        "start": "19:40",
+        "end": "20:30",
+        "durationMinutes": 50,
+        "topic": "Sorting algorithms",
+        "type": "study",
+        "reason": "Exam on 2026-11-19; high priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0013",
+        "subjectId": "dsa",
+        "subjectName": "Data Structures",
+        "date": "2026-11-11",
+        "start": "20:40",
+        "end": "21:00",
+        "durationMinutes": 20,
+        "topic": "Dynamic programming",
+        "type": "study",
+        "reason": "Exam on 2026-11-19; high priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0014",
+        "subjectId": "dsa",
+        "subjectName": "Data Structures",
+        "date": "2026-11-12",
+        "start": "17:00",
+        "end": "17:50",
+        "durationMinutes": 50,
+        "topic": "Trees & graphs",
+        "type": "study",
+        "reason": "Exam on 2026-11-19; high priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0015",
+        "subjectId": "dsa",
+        "subjectName": "Data Structures",
+        "date": "2026-11-12",
+        "start": "18:00",
+        "end": "18:50",
+        "durationMinutes": 50,
+        "topic": "Sorting algorithms",
+        "type": "study",
+        "reason": "Exam on 2026-11-19; high priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0016",
+        "subjectId": "dsa",
+        "subjectName": "Data Structures",
+        "date": "2026-11-12",
+        "start": "19:00",
+        "end": "19:50",
+        "durationMinutes": 50,
+        "topic": "Dynamic programming",
+        "type": "study",
+        "reason": "Exam on 2026-11-19; high priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0017",
+        "subjectId": "dsa",
+        "subjectName": "Data Structures",
+        "date": "2026-11-12",
+        "start": "20:00",
+        "end": "20:50",
+        "durationMinutes": 50,
+        "topic": "Trees & graphs",
+        "type": "study",
+        "reason": "Exam on 2026-11-19; high priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0018",
+        "subjectId": "dsa",
+        "subjectName": "Data Structures",
+        "date": "2026-11-13",
+        "start": "17:00",
+        "end": "17:50",
+        "durationMinutes": 50,
+        "topic": "Sorting algorithms",
+        "type": "revision",
+        "reason": "Exam on 2026-11-19; high priority. Review and recall within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0019",
+        "subjectId": "dsa",
+        "subjectName": "Data Structures",
+        "date": "2026-11-13",
+        "start": "18:00",
+        "end": "18:50",
+        "durationMinutes": 50,
+        "topic": "Dynamic programming",
+        "type": "revision",
+        "reason": "Exam on 2026-11-19; high priority. Review and recall within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0020",
+        "subjectId": "dbms",
+        "subjectName": "Database Systems",
+        "date": "2026-11-13",
+        "start": "19:00",
+        "end": "19:50",
+        "durationMinutes": 50,
+        "topic": "SQL practice",
+        "type": "study",
+        "reason": "Exam on 2026-11-21; medium priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0021",
+        "subjectId": "dbms",
+        "subjectName": "Database Systems",
+        "date": "2026-11-13",
+        "start": "20:00",
+        "end": "20:50",
+        "durationMinutes": 50,
+        "topic": "Normalization",
+        "type": "study",
+        "reason": "Exam on 2026-11-21; medium priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0022",
+        "subjectId": "dbms",
+        "subjectName": "Database Systems",
+        "date": "2026-11-14",
+        "start": "09:00",
+        "end": "09:50",
+        "durationMinutes": 50,
+        "topic": "Transactions",
+        "type": "study",
+        "reason": "Exam on 2026-11-21; medium priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0023",
+        "subjectId": "dbms",
+        "subjectName": "Database Systems",
+        "date": "2026-11-14",
+        "start": "10:00",
+        "end": "10:50",
+        "durationMinutes": 50,
+        "topic": "SQL practice",
+        "type": "study",
+        "reason": "Exam on 2026-11-21; medium priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0024",
+        "subjectId": "dbms",
+        "subjectName": "Database Systems",
+        "date": "2026-11-14",
+        "start": "11:00",
+        "end": "11:50",
+        "durationMinutes": 50,
+        "topic": "Normalization",
+        "type": "study",
+        "reason": "Exam on 2026-11-21; medium priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0025",
+        "subjectId": "dbms",
+        "subjectName": "Database Systems",
+        "date": "2026-11-14",
+        "start": "12:00",
+        "end": "12:50",
+        "durationMinutes": 50,
+        "topic": "Transactions",
+        "type": "study",
+        "reason": "Exam on 2026-11-21; medium priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0026",
+        "subjectId": "dbms",
+        "subjectName": "Database Systems",
+        "date": "2026-11-15",
+        "start": "09:00",
+        "end": "09:50",
+        "durationMinutes": 50,
+        "topic": "SQL practice",
+        "type": "revision",
+        "reason": "Exam on 2026-11-21; medium priority. Review and recall within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0027",
+        "subjectId": "dbms",
+        "subjectName": "Database Systems",
+        "date": "2026-11-15",
+        "start": "10:00",
+        "end": "10:10",
+        "durationMinutes": 10,
+        "topic": "Normalization",
+        "type": "revision",
+        "reason": "Exam on 2026-11-21; medium priority. Review and recall within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0028",
+        "subjectId": "pe",
+        "subjectName": "Prompt Engineering",
+        "date": "2026-11-15",
+        "start": "10:20",
+        "end": "11:10",
+        "durationMinutes": 50,
+        "topic": "Prompt patterns",
+        "type": "study",
+        "reason": "Exam on 2026-11-23; medium priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0029",
+        "subjectId": "pe",
+        "subjectName": "Prompt Engineering",
+        "date": "2026-11-15",
+        "start": "11:20",
+        "end": "12:10",
+        "durationMinutes": 50,
+        "topic": "Structured outputs",
+        "type": "study",
+        "reason": "Exam on 2026-11-23; medium priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0030",
+        "subjectId": "pe",
+        "subjectName": "Prompt Engineering",
+        "date": "2026-11-15",
+        "start": "12:20",
+        "end": "13:00",
+        "durationMinutes": 40,
+        "topic": "Evaluation methods",
+        "type": "study",
+        "reason": "Exam on 2026-11-23; medium priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0031",
+        "subjectId": "pe",
+        "subjectName": "Prompt Engineering",
+        "date": "2026-11-16",
+        "start": "17:00",
+        "end": "17:50",
+        "durationMinutes": 50,
+        "topic": "Constraint checking",
+        "type": "study",
+        "reason": "Exam on 2026-11-23; medium priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0032",
+        "subjectId": "pe",
+        "subjectName": "Prompt Engineering",
+        "date": "2026-11-16",
+        "start": "18:00",
+        "end": "18:50",
+        "durationMinutes": 50,
+        "topic": "Prompt patterns",
+        "type": "study",
+        "reason": "Exam on 2026-11-23; medium priority. Focused study within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0033",
+        "subjectId": "pe",
+        "subjectName": "Prompt Engineering",
+        "date": "2026-11-16",
+        "start": "19:00",
+        "end": "19:50",
+        "durationMinutes": 50,
+        "topic": "Structured outputs",
+        "type": "revision",
+        "reason": "Exam on 2026-11-23; medium priority. Review and recall within your available hours.",
+        "completed": false
+      },
+      {
+        "id": "session-0034",
+        "subjectId": "pe",
+        "subjectName": "Prompt Engineering",
+        "date": "2026-11-16",
+        "start": "20:00",
+        "end": "20:10",
+        "durationMinutes": 10,
+        "topic": "Evaluation methods",
+        "type": "revision",
+        "reason": "Exam on 2026-11-23; medium priority. Review and recall within your available hours.",
+        "completed": false
+      }
+    ],
+    "warnings": [],
+    "checks": [
+      {
+        "id": "structure",
+        "label": "Valid session structure",
+        "passed": true,
+        "details": "Passed."
+      },
+      {
+        "id": "knownSubjects",
+        "label": "Only selected subjects",
+        "passed": true,
+        "details": "Passed."
+      },
+      {
+        "id": "dateBounds",
+        "label": "Planning dates and days off respected",
+        "passed": true,
+        "details": "Passed."
+      },
+      {
+        "id": "availability",
+        "label": "Inside available hours",
+        "passed": true,
+        "details": "Passed."
+      },
+      {
+        "id": "deadlines",
+        "label": "All study before exam dates",
+        "passed": true,
+        "details": "Passed."
+      },
+      {
+        "id": "noOverlap",
+        "label": "No overlapping sessions",
+        "passed": true,
+        "details": "Passed."
+      },
+      {
+        "id": "breaks",
+        "label": "Breaks between sessions",
+        "passed": true,
+        "details": "Passed."
+      },
+      {
+        "id": "dailyLimit",
+        "label": "Daily study limit respected",
+        "passed": true,
+        "details": "Passed."
+      },
+      {
+        "id": "sessionLength",
+        "label": "Session length respected",
+        "passed": true,
+        "details": "Passed."
+      },
+      {
+        "id": "workload",
+        "label": "Requested workload not exceeded",
+        "passed": true,
+        "details": "Passed."
+      },
+      {
+        "id": "coverage",
+        "label": "Requested study time covered",
+        "passed": true,
+        "details": "Passed."
+      }
+    ],
+    "stats": {
+      "requiredMinutes": 1560,
+      "allocatedMinutes": 1560,
+      "unscheduledMinutes": 0,
+      "coveragePercent": 100,
+      "sessionCount": 34,
+      "studyDays": 8,
+      "feasible": true
+    },
+    "subjectSummaries": [
+      {
+        "subjectId": "math",
+        "name": "Engineering Mathematics",
+        "requiredMinutes": 480,
+        "allocatedMinutes": 480,
+        "unscheduledMinutes": 0
+      },
+      {
+        "subjectId": "dsa",
+        "name": "Data Structures",
+        "requiredMinutes": 420,
+        "allocatedMinutes": 420,
+        "unscheduledMinutes": 0
+      },
+      {
+        "subjectId": "dbms",
+        "name": "Database Systems",
+        "requiredMinutes": 360,
+        "allocatedMinutes": 360,
+        "unscheduledMinutes": 0
+      },
+      {
+        "subjectId": "pe",
+        "name": "Prompt Engineering",
+        "requiredMinutes": 300,
+        "allocatedMinutes": 300,
+        "unscheduledMinutes": 0
+      }
+    ],
+    "source": "constraint-engine",
+    "promptVersion": "v3",
+    "model": null
+  }
+}

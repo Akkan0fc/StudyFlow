@@ -1,0 +1,24 @@
+# Dependencies and npm logs
+node_modules/
+*.log
+
+# Local credentials and environment overrides
+.env
+.env.*
+!.env.example
+/.aws/
+
+# Planner state, saved API settings, and backups
+/data/
+
+# Test output and temporary files
+/coverage/
+/test-results/
+/playwright-report/
+*.tmp
+
+# Local workspace and OS files
+/.agents/
+/.codex/
+.DS_Store
+Thumbs.db
