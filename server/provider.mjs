@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
 import { join } from 'node:path';
 import { randomUUID } from 'node:crypto';
+import { ensureDir } from './store.mjs';
 
 const fail = (message, status = 400, noRepair = true) => Object.assign(new Error(message), { status, noRepair });
 const endpoints = { responses: 'https://api.openai.com/v1/responses', 'chat-completions': 'https://api.openai.com/v1/chat/completions' };
@@ -53,7 +54,7 @@ export function publicProvider(settings) {
 }
 
 export async function openProviderStore(directory, env = process.env) {
-  await mkdir(directory, { recursive: true });
+  await ensureDir(directory);
   const filename = join(directory, 'ai-settings.json');
   let saved = null;
   try { saved = normalizeProvider(JSON.parse(await readFile(filename, 'utf8'))); }

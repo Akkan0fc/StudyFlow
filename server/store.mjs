@@ -1,11 +1,24 @@
-import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
-import { join } from 'node:path';
+import { mkdir, readFile, writeFile, rename, lstat, readlink } from 'node:fs/promises';
+import { join, resolve, dirname } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { isDeepStrictEqual } from 'node:util';
 import { sampleConfig, emptyConfig } from './defaults.mjs';
 
+export async function ensureDir(dir) {
+  try {
+    const s = await lstat(dir);
+    if (s.isSymbolicLink()) {
+      const target = resolve(dirname(dir), await readlink(dir));
+      await mkdir(target, { recursive: true });
+    }
+  } catch (err) {
+    if (err.code !== 'ENOENT') throw err;
+  }
+  await mkdir(dir, { recursive: true });
+}
+
 export async function openStore(directory) {
-  await mkdir(directory, { recursive: true });
+  await ensureDir(directory);
   const file = join(directory, 'state.json');
   let state;
   try {

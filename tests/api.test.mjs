@@ -281,6 +281,27 @@ test('host, origin and cross-site request guards reject unauthorized browser acc
   assert.equal((await app.request('/api/state')).json.experiments.length, 0);
 });
 
+test('remote host and HTTPS origin allow authorized container and configured deployments', async (t) => {
+  const snapApp = await fixture(t);
+  const snapHost = await snapApp.rawRequest('/api/health', { headers: { Host: 'studyflow-85087.containers.snapdeploy.app' } });
+  assert.equal(snapHost.status, 200);
+
+  const envApp = await fixture(t, { env: { ALLOWED_HOSTS: '*' } });
+  const customHost = await envApp.rawRequest('/api/health', { headers: { Host: 'my-custom-domain.example' } });
+  assert.equal(customHost.status, 200);
+
+  const postRes = await envApp.rawRequest('/api/generate', {
+    method: 'POST',
+    body: '{}',
+    headers: {
+      Host: 'my-custom-domain.example',
+      Origin: 'https://my-custom-domain.example',
+      'Content-Type': 'application/json',
+    },
+  });
+  assert.notEqual(postRes.status, 403);
+});
+
 test('static pages have protective headers and the file allowlist blocks server/private files', async (t) => {
   const app = await fixture(t);
   const page = await app.request('/');

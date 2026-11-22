@@ -43,7 +43,40 @@ async function readJSON(req, limit = 128000) {
   try { return JSON.parse(Buffer.concat(chunks).toString('utf8')); } catch { throw fail('Request body is not valid JSON.'); }
 }
 
-export async function createApp({ dataDir = resolve(root, 'data'), env = process.env, fetchImpl = fetch } = {}) {
+export function isAllowedHost(authority, env = process.env) {
+  if (!authority) return false;
+  const allowed = env.ALLOWED_HOSTS ?? process.env.ALLOWED_HOSTS;
+  if (allowed === '*' || allowed === 'all') return true;
+  if (allowed) {
+    const hostWithoutPort = authority.replace(/:\d+$/, '').toLowerCase();
+    const target = authority.toLowerCase();
+    const list = allowed.split(',').map(s => s.trim().toLowerCase());
+    if (list.includes('*')) return true;
+    return list.some(item => item === target || item === hostWithoutPort || (item.startsWith('*.') && hostWithoutPort.endsWith(item.slice(1))));
+  }
+  if (/^(127\.0\.0\.1|localhost)(:\d+)?$/.test(authority)) return true;
+  if (/\.(?:snapdeploy\.app|railway\.app|onrender\.com|fly\.dev|herokuapp\.com)(:\d+)?$/i.test(authority)) return true;
+  return false;
+}
+
+export function isAllowedOrigin(originHeader, authority, req) {
+  if (!originHeader) return true;
+  if (originHeader === `http://${authority}` || originHeader === `https://${authority}`) return true;
+  try {
+    const originUrl = new URL(originHeader);
+    const originHost = originUrl.host.toLowerCase().replace(/:(80|443)$/, '');
+    const candidates = [
+      authority,
+      req?.headers?.host,
+      req?.headers?.['x-forwarded-host']?.split(',')[0]?.trim()
+    ].filter(Boolean);
+    return candidates.some(c => originHost === c.toLowerCase().replace(/:(80|443)$/, ''));
+  } catch {
+    return false;
+  }
+}
+
+export async function createApp({ dataDir = process.env.DATA_DIR || resolve(root, 'data'), env = process.env, fetchImpl = fetch } = {}) {
   const store = await openStore(dataDir);
   const providers = await openProviderStore(dataDir, env);
   validateInput(store.read().config, {allowEmpty:true});
@@ -74,11 +107,11 @@ export async function createApp({ dataDir = resolve(root, 'data'), env = process
     };
   }
   async function route(req, res) {
-    const authority = req.headers.host || '';
-    if (!/^(127\.0\.0\.1|localhost)(:\d+)?$/.test(authority)) throw fail('This application is available only on localhost.', 403);
+    const authority = req.headers['x-forwarded-host']?.split(',')[0]?.trim() || req.headers.host || '';
+    if (!isAllowedHost(authority, env)) throw fail('This application is available only on localhost. Set ALLOWED_HOSTS=* to allow external access.', 403);
     const url = new URL(req.url, `http://${authority}`);
     const mutating = !['GET', 'HEAD'].includes(req.method);
-    if (mutating && req.headers.origin && req.headers.origin !== `http://${authority}`) throw fail('Cross-origin changes are not permitted.', 403);
+    if (mutating && !isAllowedOrigin(req.headers.origin, authority, req)) throw fail('Cross-origin changes are not permitted.', 403);
     if (req.headers['sec-fetch-site'] === 'cross-site' && (mutating || url.pathname.startsWith('/api/'))) throw fail('Cross-site requests are not permitted.', 403);
     if (req.method === 'GET' && url.pathname === '/api/health') return send(res, 200, { ok: true, ai: aiStatus(env, providers.read()), storage: 'local-file', version: '1.2.0' });
     if (req.method === 'GET' && url.pathname === '/api/provider') return send(res, 200, {settings:providers.public()});
@@ -282,8 +315,9 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('PORT must be an integer from 1 to 65535.');
   const server = await createApp();
   server.on('error', error => { console.error(error.code === 'EADDRINUSE' ? `Port ${port} is already in use. Close the existing server or set another PORT in .env.` : error.message); process.exitCode = 1; });
-  server.listen(port, '0.0.0.0', () => {
-    console.log(`StudyFlow is ready at http://0.0.0.0:${port}`);
+  const host = process.env.HOST || '0.0.0.0';
+  server.listen(port, host, () => {
+    console.log(`StudyFlow is ready at http://${host}:${port}`);
     console.log('AI provider settings are available inside the app.');
   });
 }

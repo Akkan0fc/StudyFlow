@@ -14,4 +14,8 @@ RUN mkdir -p /tmp/data \
     && ln -s /tmp/data /app/data \
     && chmod -R 777 /tmp/data
 
+ENV ALLOWED_HOSTS=*
+ENV PORT=4310
+EXPOSE 4310
+
 CMD ["node", "server/index.mjs"]
